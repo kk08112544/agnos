@@ -14,10 +14,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Gender{
-  M 
-  F
-}
 
 model staff {
   id Int @default(autoincrement()) @id
@@ -42,7 +38,7 @@ model patient{
   passport_id String
   phone_number String
   email String
-  gender  Gender
+  gender  String
 }
 
 
