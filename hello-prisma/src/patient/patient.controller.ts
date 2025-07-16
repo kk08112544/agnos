@@ -4,6 +4,7 @@ import { patient } from './patient.model';
 import { Response } from 'express';
 import { Request } from '@nestjs/common';
 import { search } from './patientsearch.model';
+import { JwtAuthGuard } from "src/staff/jwt/jwt-auth.guard";
 
 @Controller('patient')
 export class PatientController {
@@ -47,6 +48,7 @@ async create(@Body() postData: patient, @Res() res: Response): Promise<any> {
 }
 
 @Post('search')
+@UseGuards(JwtAuthGuard)
 async findPatient(@Body() postData: search, @Res() res: Response): Promise<any>{
      if (
     !postData.national_id?.trim() &&
